@@ -43,7 +43,7 @@ services:
       build: packetbeat/
       volumes:
           - ./packetbeat/config/packetbeat.yml:/usr/share/packetbeat/packetbeat.yml
-          - ./packetbeat/data/:/usr/share/packetbeat/data/
+          - ./data/:/usr/share/packetbeat/data/
       networks:
           - elk
       depends_on:
