@@ -10,23 +10,23 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
     networks:
       - elk
 
-  logstash:
-    build: logstash/
-    volumes:
-      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ./logstash/pipeline:/usr/share/logstash/pipeline
-    ports:
-      - "5000:5000"
-    environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-    networks:
-      - elk
-    depends_on:
-      - elasticsearch
+#  logstash:
+#    build: logstash/
+#    volumes:
+#      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+#      - ./logstash/pipeline:/usr/share/logstash/pipeline
+#    ports:
+#      - "5000:5000"
+#    environment:
+#      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+#    networks:
+#      - elk
+#    depends_on:
+#      - elasticsearch
 
   kibana:
     build: kibana/
