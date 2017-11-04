@@ -10,5 +10,3 @@ packetbeat.protocols.http:
 
 output.elasticsearch:
   hosts: ['elasticsearch:9200']
-  username: elastic
-  password: changeme
