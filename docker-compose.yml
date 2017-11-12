@@ -7,8 +7,8 @@ services:
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
-      - "9200:9200"
-      - "9300:9300"
+      - "127.0.0.1:9200:9200"
+      - "127.0.0.1:9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
     networks:
@@ -24,16 +24,6 @@ services:
       - elk
     depends_on:
       - elasticsearch
-
-  # packetbeat:
-  #     build: packetbeat/
-  #     volumes:
-  #         - ./packetbeat/config/packetbeat.yml:/usr/share/packetbeat/packetbeat.yml
-  #         - ./data/:/usr/share/packetbeat/data/
-  #     networks:
-  #         - elk
-  #     depends_on:
-  #         - elasticsearch
 
 networks:
 
