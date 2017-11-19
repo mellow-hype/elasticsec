@@ -1,2 +1,3 @@
 .vscode/
 */elasticsearch/data/
+*/__pycache__/
