@@ -1,0 +1,79 @@
+[
+  {
+    "_id": "AV_SqRLWjGXJ8GJWZ8ac",
+    "_type": "search",
+    "_source": {
+      "title": "DNS View",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "client_ip",
+        "dns.question.name",
+        "dns.answers_count",
+        "dns.answers",
+        "dns.response_code"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"AV_SpbZSjGXJ8GJWZ8Zp\",\"highlightAll\":true,\"version\":true,\"query\":{\"query_string\":{\"query\":\"type:dns\",\"analyze_wildcard\":true}},\"filter\":[{\"meta\":{\"negate\":false,\"index\":\"AV_SpbZSjGXJ8GJWZ8Zp\",\"type\":\"phrase\",\"key\":\"type\",\"value\":\"flow\",\"disabled\":true,\"alias\":null},\"query\":{\"match\":{\"type\":{\"query\":\"flow\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"globalState\"}},{\"meta\":{\"negate\":false,\"index\":\"AV_SpbZSjGXJ8GJWZ8Zp\",\"type\":\"phrase\",\"key\":\"type\",\"value\":\"http\",\"disabled\":true,\"alias\":null},\"query\":{\"match\":{\"type\":{\"query\":\"http\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"globalState\"}},{\"meta\":{\"negate\":false,\"index\":\"AV_SpbZSjGXJ8GJWZ8Zp\",\"type\":\"phrase\",\"key\":\"type\",\"value\":\"dns\",\"disabled\":true,\"alias\":null},\"query\":{\"match\":{\"type\":{\"query\":\"dns\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AV_SrqIDjGXJ8GJWZ8at",
+    "_type": "search",
+    "_source": {
+      "title": "Flow View",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "source.mac",
+        "source.ip",
+        "dest.mac",
+        "dest.ip",
+        "dest.port",
+        "source.stats.net_bytes_total",
+        "dest.stats.net_bytes_total",
+        "transport"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"AV_SpbZSjGXJ8GJWZ8Zp\",\"highlightAll\":true,\"version\":true,\"query\":{\"query_string\":{\"query\":\"type:flow\",\"analyze_wildcard\":true}},\"filter\":[{\"meta\":{\"negate\":false,\"index\":\"AV_SpbZSjGXJ8GJWZ8Zp\",\"type\":\"phrase\",\"key\":\"type\",\"value\":\"flow\",\"disabled\":true,\"alias\":null},\"query\":{\"match\":{\"type\":{\"query\":\"flow\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"globalState\"}},{\"meta\":{\"negate\":false,\"index\":\"AV_SpbZSjGXJ8GJWZ8Zp\",\"type\":\"phrase\",\"key\":\"type\",\"value\":\"http\",\"disabled\":true,\"alias\":null},\"query\":{\"match\":{\"type\":{\"query\":\"http\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"globalState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "AV_SrIjnjGXJ8GJWZ8as",
+    "_type": "search",
+    "_source": {
+      "title": "HTTP View",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "client_ip",
+        "ip",
+        "query",
+        "http.response.code",
+        "status",
+        "bytes_in",
+        "bytes_out"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"AV_SpbZSjGXJ8GJWZ8Zp\",\"highlightAll\":true,\"version\":true,\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"type:http\"}},\"filter\":[{\"meta\":{\"negate\":false,\"index\":\"AV_SpbZSjGXJ8GJWZ8Zp\",\"type\":\"phrase\",\"key\":\"type\",\"value\":\"flow\",\"disabled\":true,\"alias\":null},\"query\":{\"match\":{\"type\":{\"query\":\"flow\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"globalState\"}},{\"meta\":{\"negate\":false,\"index\":\"AV_SpbZSjGXJ8GJWZ8Zp\",\"type\":\"phrase\",\"key\":\"type\",\"value\":\"http\",\"disabled\":true,\"alias\":null},\"query\":{\"match\":{\"type\":{\"query\":\"http\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"globalState\"}}]}"
+      }
+    }
+  }
+]
