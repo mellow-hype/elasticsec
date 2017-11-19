@@ -2,7 +2,7 @@
 import argparse
  
 
-class CLI():
+class CLI:
 
     def cli_handle_arguments(self):
         pass

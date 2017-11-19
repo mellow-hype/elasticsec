@@ -1,4 +1,4 @@
-class NewInput():
+class NewInput:
     
     def __init__(self, input_type, project):
         self.construct_input_config()
@@ -12,13 +12,13 @@ class NewInput():
             pass
 
 
-class PCAP():
+class PCAP:
     pass
 
 
-class Bro():
+class Bro:
     pass
 
 
-class Nmap():
+class Nmap:
     pass

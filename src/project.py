@@ -1,11 +1,11 @@
-class Project():
+class Project:
     def __init__(self, project_name, project_path): 
         self.path = project_path
         self.name = project_name
     
 
-    def new_project():
-        build_project()
+    def new_project(self):
+        build_project(self.path)
     
 
     def create_project_dirs(self):
