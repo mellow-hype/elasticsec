@@ -64,4 +64,4 @@ Run the following command, providing the path to the packet capture file:
 packetbeat.sh -I /path/to/pcap
 ```
 
-Navigate to `127.0.0.1:5601` in browser. You will be presented with a screen asking you to create a default index template. Use `packetbeat-*` as the index template name. If everything worked correctly the settings will be applied and the data will be visible in the Discover tab. 
+Navigate to `127.0.0.1:5601` in a browser. You will be presented with a screen asking you to create a default index template. Use `packetbeat-*` as the index template name. If everything worked correctly the settings will be applied and the data will be visible in the Discover tab. 
