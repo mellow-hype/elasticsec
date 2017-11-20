@@ -1,4 +1,5 @@
 import os
+from containers import Container
 from shutil import copytree
 
 class Project:
@@ -8,6 +9,7 @@ class Project:
         self.name = project_name
         self.path = str(self.project_storage_dir + self.name)
         self.docker_path = str(self.path + "/docker")
+        self.containers = Container(self.docker_path)
 
     # Set path to directory where projects will be stored
     def set_project_storage_path(self):
@@ -16,7 +18,7 @@ class Project:
 
     # Set path to directory where project templates are stored
     def set_template_path(self):
-        return str(os.getcwd() + '/elk-containers/')
+        return str(os.getcwd() + '/containers/')
 
     # Check if current project exists
     def project_exists(self):
