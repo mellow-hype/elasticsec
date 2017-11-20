@@ -1,5 +1,5 @@
 import os
-from containers import Container
+from .containers import Container
 from shutil import copytree
 
 class Project:
@@ -14,7 +14,6 @@ class Project:
     # Set path to directory where projects will be stored
     def set_project_storage_path(self):
         return str(os.getcwd()) + '/projects/'
-
 
     # Set path to directory where project templates are stored
     def set_template_path(self):
@@ -35,8 +34,6 @@ class Project:
         else:
             os.mkdir(self.path)
         copytree(self.templates_dir, self.docker_path)
+        os.mkdir(self.docker_path + '/elasticsearch/data')
         
 
-        
-
-        
