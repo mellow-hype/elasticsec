@@ -8,7 +8,6 @@ class Project:
         self.name = project_name
         self.path = str(self.project_storage_dir + self.name)
         self.docker_path = str(self.path + "/docker")
-        self.project_exists()
 
     # Set path to directory where projects will be stored
     def set_project_storage_path(self):
@@ -27,7 +26,7 @@ class Project:
         else:
             return False
 
-    def create_new_project_directory():
+    def create_new_project_directory(self):
         print("Creating new project directory at {}".format(self.path))
         if os.path.exists(self.project_storage_dir) is False:
             os.makedirs(self.path)
