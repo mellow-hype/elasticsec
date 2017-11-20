@@ -1,27 +1,30 @@
 import subprocess
-from os import path
- 
+from os import chdir
 
 class Container:
-    def __init__(docker_path):
+    def __init__(self, docker_path):
         self.docker_path = docker_path
         self.status = 0
-    
-    def start(self):
 
-        subprocess.check_output("cd", self.docker_path)
-        subprocess.check_output("docker-compose" "up" "-d")
+
+    def start(self):
+        '''Start the containers'''
+
+        chdir(self.docker_path)
+        subprocess.run(["docker-compose", "up", "-d"])
 
     
     def stop(self):
+        '''Bring the containers down'''
 
-        subprocess.check_output("cd", self.docker_path)
-        subprocess.check_output("docker-compose" "stop" "-d")
+        chdir(self.docker_path)
+        subprocess.run(["docker-compose", "stop"])
 
 
     def restart(self):
+        '''Restart the containers'''
 
-        subprocess.check_output("cd", self.docker_path)
-        subprocess.check_output("docker-compose" "restart" "-d")
+        chdir(self.docker_path)
+        subprocess.run(["docker-compose", "restart"])
 
 
