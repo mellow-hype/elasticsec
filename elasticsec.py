@@ -47,7 +47,6 @@ if __name__ == '__main__':
 
 
     # Handle container actions
-
     if args.up is True:
         currentProject.containers.start()
     elif args.stop is True:
