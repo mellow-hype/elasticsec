@@ -45,15 +45,31 @@ if __name__ == '__main__':
     except AttributeError:
         currentProject = Project(args.project)
 
+    try:
+        if args.type is not None:
+            if args.type == 'pcap':
+                currentProject.reader.pcap()
+            elif args.type == 'bro':
+                currentProject.reader.bro()
+            elif args.type == 'nmap':
+                currentProject.reader.nmap()
+    except AttributeError:
+        pass
 
     # Handle container actions
-    if args.up is True:
-        currentProject.containers.start()
-    elif args.stop is True:
-        currentProject.containers.stop()
-    elif args.restart is True:
-        currentProject.containers.restart()
+    
+    try:
+        if args.up is True:
+            currentProject.containers.start()
+        elif args.stop is True:
+            currentProject.containers.stop()
+        elif args.restart is True:
+            currentProject.containers.restart()
+    except AttributeError:
+        pass
 
     # Handle input functions
+
+    
     
 
