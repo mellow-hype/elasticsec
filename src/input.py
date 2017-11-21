@@ -1,24 +1,30 @@
-class NewInput:
+from .project import Project
+import subprocess
+
+class InputReader:
     
-    def __init__(self, input_type, project):
-        self.construct_input_config()
+    def __init__(self, project, input_type, input_path):
+        self.project = Project(self.project)
+        self.type = input_type
+        self.input_path = input_path
     
-    def construct_input_config(input_type):
-        if input_type == "pcap":
-            self.pcap = PCAP()
-        elif input_type == "nmap":
-            pass
-        elif input_type == "bro":
-            pass
+    def read_input(self):
+        if self.type == "pcap":
+            self.pcap()
+        elif self.type == "nmap":
+            self.nmap()
+        elif self.type == "bro":
+            self.bro()
+
+    def check_dependencies(self):
+        pass
 
 
-class PCAP:
-    pass
+    def pcap(self):
 
 
-class Bro:
-    pass
+    def bro(self):
+        pass
 
-
-class Nmap:
-    pass
+    def nmap(self):
+        pass
