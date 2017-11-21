@@ -5,7 +5,7 @@ from shutil import copytree
 class Project:
     def __init__(self, project_name):
         self.project_storage_dir = self.set_project_storage_path()
-        self.templates_dir = self.set_template_path()
+        self.template_path = self.set_template_path()
         self.name = project_name
         self.path = str(self.project_storage_dir + self.name)
         self.docker_path = str(self.path + "/docker")
@@ -33,7 +33,7 @@ class Project:
             os.makedirs(self.path)
         else:
             os.mkdir(self.path)
-        copytree(self.templates_dir, self.docker_path)
+        copytree(self.template_path, self.docker_path)
         os.mkdir(self.docker_path + '/elasticsearch/data')
         
 
