@@ -1,6 +1,7 @@
 import os
-from .containers import Container
 from shutil import copytree
+from .containers import Container
+from .input import InputReader
 
 class Project:
     def __init__(self, project_name):
@@ -10,6 +11,7 @@ class Project:
         self.path = str(self.project_storage_dir + self.name)
         self.docker_path = str(self.path + "/docker")
         self.containers = Container(self.docker_path)
+        self.reader = InputReader()
 
     # Set path to directory where projects will be stored
     def set_project_storage_path(self):
