@@ -1,30 +1,36 @@
-from .project import Project
 import subprocess
 
 class InputReader:
+
+    def __init__(self):
+        self.pcap = PCAP()
+        self.bro = BroInput()
+        self.nmap = Nmap()
+
+
+class PCAP:
+    def __init__(self):
+        pass
+
+
+    def config(self):
+        pass
     
-    def __init__(self, project, input_type, input_path):
-        self.project = Project(self.project)
-        self.type = input_type
-        self.input_path = input_path
-    
-    def read_input(self):
-        if self.type == "pcap":
-            self.pcap()
-        elif self.type == "nmap":
-            self.nmap()
-        elif self.type == "bro":
-            self.bro()
 
     def check_dependencies(self):
         pass
 
 
-    def pcap(self):
+    def read(self):
+        # subprocess.run(["sudo", "chown", "0:0"])
+        pass
+        
+        
 
 
-    def bro(self):
+class BroInput:
         pass
 
-    def nmap(self):
+
+class Nmap:
         pass
