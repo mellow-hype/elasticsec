@@ -32,23 +32,21 @@
 ## Task Tracking
 
 - Configuration
-    - Generate config
-    - Read config
-    - Edit config
-    - Write config
+    - [ ] Generate config
+    - [ ] Read config
+    - [ ] Edit config
+    - [ ] Write config
 - Projects
-    - Create project directory
-    - Copy Docker files
+    - [x] Create project directory
+    - [x] Copy Docker files
 - Inputs
-    - Check dependencies
-    - Error handling
-    - PCAP
-        - Custom packetbeat.yml
+    - [ ] Check dependencies
+    - [ ] Error handling
+    - [x] PCAP
+        - [x] Custom packetbeat.yml
             - `sudo chown 0:0 packetbeat.yml`
             - `sudo chmod go-w packetbeat.yml`
-        - Custom Packetbeat index template
-        - Launch Packetbeat
-            - `sudo packetbeat.sh -path.config inputs/packetbeat/ -c packetbeat.yml -I /path/to/pcap`
+        - [x] Custom Packetbeat index template
+        - [x] Launch Packetbeat
     - Bro
-        - Create default LS pipeline for Bro
-        - 
+        - [ ] Create default LS pipeline for Bro
