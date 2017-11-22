@@ -41,13 +41,9 @@ We think this can be useful for security analysts, malware researchers, incident
 
 ## Processing PCAPs
 
-### Installing Packetbeat
+### Install Packetbeat
 
-Packetbeat is the Beats plugin made specifically for packet capture data. Usually, it is run as a service and collects the packet captures in real time, but it can also be provided an input pcap file for reading.
-
-Packetbeat can be installed through package manager repositories if you've added their repos to your sources list or by downloading a file in the appropriate format for your OS. 
-
-The following commands download and install the Packetbeat package for Debian-based systems on your local machine.
+Use the following commands to download and install the Packetbeat package for Debian-based systems:
 
 ```
 sudo apt-get install libpcap0.8
@@ -55,8 +51,17 @@ curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.
 sudo dpkg -i packetbeat-5.6.3-amd64.deb
 ```
 
+Or use these for RPM-based systems:
+
+```
+sudo yum install libpcap
+curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.6.3-x86_64.rpm
+sudo rpm -vi packetbeat-5.6.3-x86_64.rpm
+```
+
 Once Packetbeat is installed, there isn't much do configuration-wise. The defaults work out of the box for our setup, but changes can be made if needed.
 
+See the [Packetbeat documentation]() for more information.
 
 ### Usage
 
