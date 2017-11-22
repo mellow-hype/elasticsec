@@ -1,24 +1,40 @@
-class NewInput:
+import subprocess
+
+
+class InputReader:
+    '''InputReader class'''
+
+    def __init__(self, project):
+        self.project = project
+        self.readcmd = ''
+
+        # Initial checks and configuration for input
+        self.config(self.project.config.input_type)
+        self.check_dependencies(self.project.config.input_type)
+
+        # Check input type and prepare read command for particular type
+        if self.project.config.input_type == 'pcap':
+            self.readcmd = "sudo /usr/share/packetbeat/bin/packetbeat -path.config {} -c packetbeat.yml -I {}".format(self.project.config.packetbeat_conf_path, self.project.config.input_path)
+        elif self.project.config.input_type == 'bro':
+            self.readcmd = ""
+        elif self.project.config.input_type == 'nmap':
+            self.readcmd == ""
+        else:
+            print("Unknown type. Exiting...")
+            exit()     
+
+        self.read()
+
     
-    def __init__(self, input_type, project):
-        self.construct_input_config()
+    # Read command, is passed 
+    def read(self):
+        subprocess.call(self.readcmd.split(' '))
+        
     
-    def construct_input_config(input_type):
-        if input_type == "pcap":
-            self.pcap = PCAP()
-        elif input_type == "nmap":
-            pass
-        elif input_type == "bro":
-            pass
+    def config(self, input_type):
+        # subprocess.run(["sudo", "chown", "0:0"])
+        pass
 
 
-class PCAP:
-    pass
-
-
-class Bro:
-    pass
-
-
-class Nmap:
-    pass
+    def check_dependencies(self, input_type):
+        pass

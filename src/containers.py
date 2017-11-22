@@ -4,8 +4,7 @@ from os import chdir
 class Container:
     def __init__(self, docker_path):
         self.docker_path = docker_path
-        self.status = 0
-
+   
 
     def start(self):
         '''Start the containers'''
