@@ -61,6 +61,7 @@ def send_syslog_tcp_input(input_path):
             sock.sendall(data)
         
         f.close()
+        print("{} sent to Logstash syslog input".format(input_path))
 
     else:
         print("File not found.")
