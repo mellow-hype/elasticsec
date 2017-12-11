@@ -57,10 +57,13 @@ if __name__ == '__main__':
 
     try:
         if args.start is True:
+            currentProject = Project(args.project)
             currentProject.containers.start()
         elif args.stop is True:
+            currentProject = Project(args.project)
             currentProject.containers.stop()
         elif args.restart is True:
+            currentProject = Project(args.project)
             currentProject.containers.restart()
     except AttributeError or KeyboardInterrupt:
         pass
