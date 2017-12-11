@@ -12,23 +12,17 @@ class InputReader:
         self.config(self.project.config.input_type)
         self.check_dependencies(self.project.config.input_type)
 
-        # Check input type and prepare read command for particular type
-        if self.project.config.input_type == 'pcap':
-            self.readcmd = "sudo /usr/share/packetbeat/bin/packetbeat -path.config {} -c packetbeat.yml -I {}".format(self.project.config.packetbeat_conf_path, self.project.config.input_path)
-        elif self.project.config.input_type == 'bro':
-            self.readcmd = ""
-        elif self.project.config.input_type == 'nmap':
-            self.readcmd == ""
-        else:
-            print("Unknown type. Exiting...")
-            exit()     
-
         self.read()
 
     
     # Read command, is passed 
     def read(self):
-        subprocess.call(self.readcmd.split(' '))
+        if self.project.config.input_type == 'pcap':
+            self.readcmd = "sudo /usr/share/packetbeat/bin/packetbeat -path.config {} -c packetbeat.yml -I {}".format(self.project.config.packetbeat_conf_path, self.project.config.input_
+            subprocess.call(self.readcmd.split(' '))
+
+        elif self.project.config.input_type == "syslog":
+            
         
     
     def config(self, input_type):
