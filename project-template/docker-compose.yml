@@ -20,6 +20,7 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - ./data/:/usr/share/logstash/data/
     ports:
       - "127.0.0.1:5000:5000"
     environment:

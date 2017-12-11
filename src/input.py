@@ -1,6 +1,7 @@
 import subprocess
 import socket
-from os import path
+from os import path, makedirs, mkdir
+from shutil import copyfile
 
 HOST_IP = '127.0.0.1'
 HOST_PORT_SYSLOG = 5000
@@ -17,7 +18,7 @@ class InputReader:
         self.readcmd = ''
 
         # Initial checks and configuration for input
-        self.config(self.project.config.input_type)
+        self.config()
         self.check_dependencies(self.project.config.input_type)
 
         self.read()
@@ -36,12 +37,27 @@ class InputReader:
         elif self.project.config.input_type == 'syslog':
             send_syslog_tcp_input(self.project.config.input_path)
 
+        elif self.project.config.input_type == 'bro':
+            dst_dir = (self.project.config.project_input_path + "/{}/".format(self.project.config.input_type))
+            src_dir = self.project.config.input_path
+
+            copyfile(src_dir, dst_dir)
+        
+    
+    def config(self):
+        if self.project.config.input_type == 'pcap':
+            pass
+
+        elif self.project.config.input_type == 'syslog':
+            pass
+
+        elif self.project.config.input_type == 'bro':
+            init_bro_dirs(self.project.config.project_input_path)
+
         else:
             print("{} {} is not a supported type.".format(ERR_PROMPT, self.project.config.input_type))
             exit()
-        
-    
-    def config(self, input_type):
+
         # subprocess.run(["sudo", "chown", "0:0"])
         pass
 
@@ -70,3 +86,14 @@ def send_syslog_tcp_input(input_path):
         print("{} File not found: {}".format(ERR_PROMPT, input_path))
     
     sock.close()
+
+
+def init_bro_dirs(inputs_dir):
+    bro_input_path = inputs_dir + '/bro'
+    if path.exists(bro_input_path) is False:
+        makedir(bro_input_path)
+    else:
+        pass
+        
+
+

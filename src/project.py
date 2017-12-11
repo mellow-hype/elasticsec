@@ -39,6 +39,9 @@ class Project():
             
             # Create the data directory
             os.mkdir(self.config.docker_path + '/elasticsearch/data')
+
+            # Create the data and inputs directory for the new project
+            os.makedirs(self.config.project_input_path)
     
     def reader(self, input_type, input_path):
         self.config.input_type = input_type
@@ -54,6 +57,8 @@ class Config:
         self.base_projects_path = self.set_base_projects_path()
         self.template_path = self.set_template_path()
         self.project_path= str(self.base_projects_path + project)
+        self.project_data_path = str(self.project_path + "/data")
+        self.project_input_path = str(self.project_data_path + "/input")
         self.project_config = str(self.project_path + "config.yml")
         self.docker_path = str(self.project_path + "/docker")
         self.input_config_path = self.set_input_config_path()
