@@ -22,7 +22,8 @@ We think this can be useful for security analysts, malware researchers, incident
 
 
 ## Setup
-## Requirements    
+
+### Requirements    
 - Python 3
 - docker-compose
 
