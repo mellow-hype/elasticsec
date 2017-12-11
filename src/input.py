@@ -55,7 +55,7 @@ class InputReader:
             init_bro_dirs(self.project.config.project_input_path)
 
         else:
-            print("{} {} is not a supported type.".format(ERR_PROMPT, self.project.config.input_type))
+            print("{} '{}' is not a supported type.".format(ERR_PROMPT, self.project.config.input_type))
             exit()
 
         # subprocess.run(["sudo", "chown", "0:0"])
