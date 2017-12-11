@@ -1,4 +1,9 @@
 import subprocess
+import socket
+from os import *
+
+HOST_IP = '127.0.0.1'
+HOST_PORT_SYSLOG = 5000
 
 
 class InputReader:
@@ -22,6 +27,7 @@ class InputReader:
             subprocess.call(self.readcmd.split(' '))
 
         elif self.project.config.input_type == "syslog":
+
             
         
     
@@ -32,3 +38,19 @@ class InputReader:
 
     def check_dependencies(self, input_type):
         pass
+
+
+def send_syslog_tcp_input():
+    
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.connect(HOST_IP, HOST_PORT_SYSLOG)
+
+    if path.isfile('filename'):
+        f = open('filename', 'rb')
+
+        while True:
+            data = f.read()      
+            if not data: break
+            sock.sendall(data)
+        
+        f.close()
