@@ -5,6 +5,9 @@ from os import path
 HOST_IP = '127.0.0.1'
 HOST_PORT_SYSLOG = 5000
 
+ERR_PROMPT = '[-]'
+SUCC_PROMPT = '[+]'
+
 
 class InputReader:
     '''InputReader class'''
@@ -34,7 +37,7 @@ class InputReader:
             send_syslog_tcp_input(self.project.config.input_path)
 
         else:
-            print("{} is not a supported type.".format(self.project.config.input_type))
+            print("{} {} is not a supported type.".format(ERR_PROMPT, self.project.config.input_type))
             exit()
         
     
@@ -61,9 +64,9 @@ def send_syslog_tcp_input(input_path):
             sock.sendall(data)
         
         f.close()
-        print("{} sent to Logstash syslog input".format(input_path))
+        print("{} File sent to Logstash syslog input: {}".format(SUCC_PROMPT, input_path))
 
     else:
-        print("File not found.")
+        print("{} File not found: {}".format(ERR_PROMPT, input_path))
     
     sock.close()
