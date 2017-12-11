@@ -16,7 +16,7 @@ def cli_handle_arguments():
     # Input subcommand parser
     input_parser = subparsers.add_parser('input', help='Read an input source')
     input_parser.add_argument('project', help='Target project')
-    input_parser.add_argument('intype',choices=['pcap', 'nmap'], 
+    input_parser.add_argument('intype',choices=['pcap', 'nmap','syslog'], 
                                 help='Type of data to be read')
     input_parser.add_argument('inputpath', help='Path to input data')
 
