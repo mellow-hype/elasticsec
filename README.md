@@ -13,8 +13,8 @@ We think this can be useful for security analysts, malware researchers, incident
 
 - [ ] Pre-configured support for common data formats
     + [x] PCAP
+    + [x] Syslog (added 2017-12-11)
     + [ ] Bro logs (TODO)
-    + [ ] Syslog (TODO)
     + [ ] Nmap (TODO)
     + More...
 - [ ] Custom index templates for Elasticsearch (TODO)
@@ -27,13 +27,14 @@ We think this can be useful for security analysts, malware researchers, incident
 - Python 3
 - docker-compose
 
-### Initialize a New Project
+
+## Initialize a New Project
 
 ```
 ./elasticsec.py new <project_name>
 ```
 
-### Start the Containers
+## Start the Containers
 
 ```
 ./elasticsec.py containers --up <project_name>
@@ -67,7 +68,19 @@ See the [Packetbeat documentation]() for more information.
 ### Usage
 
 Once the containers are up and running, the pcap file can be provided to Packetbeat for processing. 
-input
+
 ```
 ./elasticsec.py input <project> pcap /path/to/pcap 
 ``` 
+
+
+## Processing Syslog Files
+
+### Usage 
+
+Once containers are up and running, you can use the input subcommand to send the syslog file to Logstash for processing.
+
+```
+./elasticsec.py input <project> syslog /path/to/syslog_file
+```
+
