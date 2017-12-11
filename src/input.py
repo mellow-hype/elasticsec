@@ -27,8 +27,11 @@ class InputReader:
             subprocess.call(self.readcmd.split(' '))
 
         elif self.project.config.input_type == "syslog":
+            send_syslog_tcp_input(self.config.input_path)
 
-            
+        else:
+            print("{} is not a supported type.".format(self.config.input_type))
+            exit()
         
     
     def config(self, input_type):
@@ -40,13 +43,13 @@ class InputReader:
         pass
 
 
-def send_syslog_tcp_input():
+def send_syslog_tcp_input(input_path):
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect(HOST_IP, HOST_PORT_SYSLOG)
 
-    if path.isfile('filename'):
-        f = open('filename', 'rb')
+    if path.isfile(input_path):
+        f = open(input_path, 'rb')
 
         while True:
             data = f.read()      
@@ -54,3 +57,6 @@ def send_syslog_tcp_input():
             sock.sendall(data)
         
         f.close()
+
+    else:
+        print("File not found.")
