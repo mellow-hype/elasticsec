@@ -38,10 +38,13 @@ class InputReader:
             send_syslog_tcp_input(self.project.config.input_path)
 
         elif self.project.config.input_type == 'bro':
-            dst_dir = (self.project.config.project_input_path + "/{}/".format(self.project.config.input_type))
-            src_dir = self.project.config.input_path
+            src_file = self.project.config.input_path
+            dst_dir = (self.project.config.project_input_path + "/{}/{}".format(
+                self.project.config.input_type, 
+                src_file.rstrip('/').split('/')[-1])
+                )
 
-            copyfile(src_dir, dst_dir)
+            copyfile(src_file, dst_dir)
         
     
     def config(self):
