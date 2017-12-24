@@ -3,6 +3,9 @@ from shutil import copytree
 from .containers import Container
 from .input import InputReader
 
+ERR_PROMPT = '[-]'
+SUCC_PROMPT = '[+]'
+
 class Project():
     '''Project class'''
 
@@ -22,7 +25,7 @@ class Project():
     def create_new_project_directory(self):
         # Check if project directory already exists
         if self.project_exists() is True:
-            print("[+] Error: Project directory already exists at {}".format(self.config.project_path))
+            print("{} Error: Project directory already exists at {}".format(ERR_PROMPT, self.config.project_path))
             exit()
         else:
             print("Creating new project directory at {}".format(self.config.project_path))
