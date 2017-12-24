@@ -57,10 +57,10 @@ class Config:
         self.base_projects_path = self.set_base_projects_path()
         self.template_path = self.set_template_path()
         self.project_path= str(self.base_projects_path + project)
-        self.project_data_path = str(self.project_path + "/data")
+        self.docker_path = str(self.project_path + "/docker")
+        self.project_data_path = str(self.docker_path + "/data")
         self.project_input_path = str(self.project_data_path + "/input")
         self.project_config = str(self.project_path + "config.yml")
-        self.docker_path = str(self.project_path + "/docker")
         self.input_config_path = self.set_input_config_path()
         self.packetbeat_conf_path = self.input_config_path + "/packetbeat/"
         self.bro_conf_path = self.input_config_path + "/bro/"
