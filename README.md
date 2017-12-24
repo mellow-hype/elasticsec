@@ -2,11 +2,9 @@
 
 ## Overview
 
-**Status:** WORK IN PROGRESS
+Elasticsec is a portable ELK stack that can be used together with Elastic's Beats plugins and other tools to process different kinds of security-related data into Elasticsearch. While other excellent tools exists for analyzing packet captures, logs, and other similar data, this project aims to use the Elastic stack to centralize the collection and analysis of this information. 
 
-This project is a portable ELK stack that can be used together with Elastic's Beats plugins and other tools to process different kinds of security-related data into Elasticsearch. While other excellent tools exists for analyzing packet captures, logs, and other similar data, this project aims to use the Elastic stack to centralize the collection and analysis of this information. 
-
-We think this can be useful for security analysts, malware researchers, incident responders, and others in the security field. As such, we plan on creating default configurations for the formats most commonly encountered by security folk.
+This might be useful to security analysts, malware researchers, incident responders, and others in the security field. As such, the plan is to create default configurations for the formats most commonly encountered by security folk.
 
 
 ### Requirements    
@@ -16,10 +14,10 @@ We think this can be useful for security analysts, malware researchers, incident
 
 ### Features
 
-- [ ] Pre-configured support for common data formats
+- Pre-configured support for common data formats
     + [x] PCAP
     + [x] Syslog (added 2017-12-11)
-    + [ ] Bro
+    + [x] Bro
         + [x] HTTP
     + [ ] Nmap (TODO)
     + More...
