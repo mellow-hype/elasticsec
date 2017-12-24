@@ -1,5 +1,4 @@
 import os
-import subprocess
 from shutil import copytree
 from .containers import Container
 from .input import InputReader
@@ -33,10 +32,10 @@ class Project():
                 os.makedirs(self.config.base_projects_path)
             else:
                 os.mkdir(self.config.project_path)
-            
+
             # Copy Docker template files to new project
             copytree(self.config.template_path, self.config.docker_path)
-            
+
             # Create the data directory
             os.mkdir(self.config.docker_path + '/elasticsearch/data')
 
@@ -46,7 +45,7 @@ class Project():
     def reader(self, input_type, input_path):
         self.config.input_type = input_type
         self.config.input_path = input_path
-        read = InputReader(self)
+        InputReader(self)
 
     
 class Config:
