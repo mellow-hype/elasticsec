@@ -9,32 +9,33 @@ This project is a portable ELK stack that can be used together with Elastic's Be
 We think this can be useful for security analysts, malware researchers, incident responders, and others in the security field. As such, we plan on creating default configurations for the formats most commonly encountered by security folk.
 
 
-### Features
-
-- [ ] Pre-configured support for common data formats
-    + [x] PCAP
-    + [x] Syslog (added 2017-12-11)
-    + [ ] Bro logs (TODO)
-    + [ ] Nmap (TODO)
-    + More...
-- [ ] Custom index templates for Elasticsearch (TODO)
-- [ ] Saved searches and visualizations of useful metrics (TODO)
-
-
-## Setup
-
 ### Requirements    
 - Python 3
 - docker-compose
 
 
-## Initialize a New Project
+### Features
+
+- [ ] Pre-configured support for common data formats
+    + [x] PCAP
+    + [x] Syslog (added 2017-12-11)
+    + [ ] Bro
+        + [x] HTTP
+    + [ ] Nmap (TODO)
+    + More...
+- [ ] Custom index templates for Elasticsearch 
+- [ ] Saved searches and visualizations of useful metrics 
+
+
+## Usage
+
+### Initialize a New Project
 
 ```
 ./elasticsec.py new <project_name>
 ```
 
-## Start the Containers
+### Start the Containers
 
 ```
 ./elasticsec.py containers --up <project_name>
@@ -84,3 +85,16 @@ Once containers are up and running, you can use the input subcommand to send the
 ./elasticsec.py input <project> syslog /path/to/syslog_file
 ```
 
+
+
+## Processing Bro Log Files
+
+### Bro HTTP Log
+
+Once containers are up and running, you can use the input subcommand to copy the Bro file to the data input directory Logstash is monitoring.
+
+```
+./elasticsec.py input <project> bro /path/to/bro_http_file
+```
+
+*Note: Make sure the file name includes the string 'http', as this is how Logstash identifies the log type.*
