@@ -39,21 +39,30 @@ if __name__ == '__main__':
     try:
         if args.list is True:
             list_projects()
-    except AttributeError, KeyboardInterrupt:
+    except AttributeError:
         pass
+    except KeyboardInterrupt:
+        print("Interrupted!")
+        exit()
 
     try:
         if args.projectname is not None:
             newProject = Project(args.projectname).create_new_project_directory()
-    except AttributeError, KeyboardInterrupt:
+    except AttributeError:
         pass
+    except KeyboardInterrupt:
+        print("Interrupted!")
+        exit()
 
     try:   
         if args.intype is not None:
             currentProject = Project(args.project)
             currentProject.reader(args.intype, args.inputpath)
-    except AttributeError, KeyboardInterrupt:
+    except AttributeError:
         pass
+    except KeyboardInterrupt:
+        print("Interrupted!")
+        exit()
 
     try:
         if args.start is True:
@@ -65,7 +74,10 @@ if __name__ == '__main__':
         elif args.restart is True:
             currentProject = Project(args.project)
             currentProject.containers.restart()
-    except AttributeError, KeyboardInterrupt:
+    except AttributeError:
         pass
+    except KeyboardInterrupt:
+        print("Interrupted!")
+        exit()
 
 
