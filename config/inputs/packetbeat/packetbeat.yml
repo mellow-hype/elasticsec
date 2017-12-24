@@ -56,6 +56,10 @@ packetbeat.protocols.http:
   # Configure the ports where to listen for HTTP traffic. You can disable
   # the HTTP protocol by commenting out the list of ports.
   ports: [80, 8080, 8000, 5000, 8002]
+  send_headers: ["User-Agent", "Cookie", "Set-Cookie"]
+  send_request: true
+  send_response: true
+  split_coookie: true
 
 packetbeat.protocols.memcache:
   # Configure the ports where to listen for memcache traffic. You can disable
