@@ -17,6 +17,7 @@ This might be useful to security analysts, malware researchers, incident respond
 - Pre-configured support for common data formats
     + [x] PCAP
     + [x] Syslog (added 2017-12-11)
+    + [x] Nginx access logs (added 2018-02-10)
     + [x] Bro
         + [x] HTTP
     + [ ] Nmap (TODO)
@@ -83,7 +84,17 @@ Once containers are up and running, you can use the input subcommand to send the
 ./elasticsec.py input <project> syslog /path/to/syslog_file
 ```
 
+## Processing Nginx Access Log Files
 
+### Usage 
+
+Once containers are up and running, you can use the input subcommand to send the nginx log file to Logstash for processing.
+
+```
+./elasticsec.py input <project> nginx /path/to/nginx_file
+```
+
+*Note: Make sure the file name begins with the word 'access' (this is default for nginx access logs), as this is how Logstash identifies the log type.*
 
 ## Processing Bro Log Files
 
