@@ -46,6 +46,14 @@ class InputReader:
 
             copyfile(src_file, dst_dir)
         
+        elif self.project.config.input_type == 'nginx':
+            src_file = self.project.config.input_path
+            dst_dir = (self.project.config.project_input_path + "/{}/{}".format(
+                self.project.config.input_type, 
+                src_file.rstrip('/').split('/')[-1])
+                )
+
+            copyfile(src_file, dst_dir)
     
     def config(self):
         if self.project.config.input_type == 'pcap':
@@ -57,11 +65,13 @@ class InputReader:
         elif self.project.config.input_type == 'bro':
             init_bro_dirs(self.project.config.project_input_path)
 
+        elif self.project.config.input_type == 'nginx':
+            init_nginx_dirs(self.project.config.project_input_path)
+
         else:
             print("{} '{}' is not a supported type.".format(ERR_PROMPT, self.project.config.input_type))
             exit()
 
-        # subprocess.run(["sudo", "chown", "0:0"])
         pass
 
 
@@ -94,9 +104,15 @@ def send_syslog_tcp_input(input_path):
 def init_bro_dirs(inputs_dir):
     bro_input_path = inputs_dir + '/bro'
     if path.exists(bro_input_path) is False:
-        makedir(bro_input_path)
+        mkdir(bro_input_path)
     else:
         pass
         
 
+def init_nginx_dirs(inputs_dir):
+    nginx_input_path = inputs_dir + '/nginx'
+    if path.exists(nginx_input_path) is False:
+        mkdir(nginx_input_path)
+    else:
+        pass
 
