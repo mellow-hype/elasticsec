@@ -1,5 +1,7 @@
 .vscode/
 */elasticsearch/data/
 */__pycache__/
-/projects/
-/testing/
+*/projects/
+*/testing/
+*/__pycache__
+*.pyc
