@@ -19,22 +19,27 @@ This might be useful to security analysts, malware researchers, incident respond
     + [x] Syslog (added 2017-12-11)
     + [x] Nginx access logs (added 2018-02-10)
     + [x] Bro
-        + [x] HTTP
-    + [ ] Nmap (TODO)
-    + More...
-- [ ] Custom index templates for Elasticsearch 
-- [ ] Saved searches and visualizations of useful metrics 
+        + [x] bro_http
+    + [x] Nmap (added 2018-05-07)
+        + [ ] TODO: Read Nmap files from disk
+- [x] Custom index templates for Elasticsearch 
 
 
 ## Usage
 
+Use `./elasticsec.py --help` for full details.
+
 ### Initialize a New Project
+
+First, create a new project to work in with the command below. This will create a directory with the given name in `elasticsec/projects/` and prepare the necessary files.
 
 ```
 ./elasticsec.py new <project_name>
 ```
 
 ### Start the Containers
+
+Once the project has been created, start up the containers that make up the ELK stack with this command:
 
 ```
 ./elasticsec.py containers --up <project_name>
@@ -96,6 +101,7 @@ Once containers are up and running, you can use the input subcommand to send the
 
 *Note: Make sure the file name begins with the word 'access' (this is default for nginx access logs), as this is how Logstash identifies the log type.*
 
+
 ## Processing Bro Log Files
 
 ### Bro HTTP Log
@@ -107,3 +113,4 @@ Once containers are up and running, you can use the input subcommand to copy the
 ```
 
 *Note: Make sure the file name includes the string 'http', as this is how Logstash identifies the log type.*
+
