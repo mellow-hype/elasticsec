@@ -1,5 +1,5 @@
 import os
-from shutil import copytree
+from shutil import copytree, copyfile
 from .containers import Container
 from .input import InputReader
 
@@ -44,6 +44,11 @@ class Project():
 
             # Create the data and inputs directory for the new project
             os.makedirs(self.config.project_input_path)
+
+            # Copy the nmap elasticsearch template to the correct location
+            self.config.init_nmap_template()
+
+            
     
     def reader(self, input_type, input_path):
         self.config.input_type = input_type
@@ -66,7 +71,7 @@ class Config:
         self.input_config_path = self.set_input_config_path()
         self.packetbeat_conf_path = self.input_config_path + "/packetbeat/"
         self.bro_conf_path = self.input_config_path + "/bro/"
-        self.nmap_conf_path = self.input_config_path + "/nmap/"
+        self.nmap_template_path = self.input_config_path + "/nmap/elasticsearch_nmap_template.json"
 
         # Configure input settings
         self.input_type = ''
@@ -89,9 +94,15 @@ class Config:
         return str(os.getcwd() + '/config/inputs')
 
 
+    def init_nmap_template(self):
+        dest_dir = self.project_data_path
+        dest_path = "{}/{}".format(dest_dir, os.path.basename(self.nmap_template_path))
+        if os.path.exists(dest_dir) is False:
+            os.mkdir(dest_dir)
+        copyfile(self.nmap_template_path, dest_path)
+
 
 def list_projects():
-
     projects_path = str(os.getcwd() + "/projects")
     projects_list = os.listdir(projects_path)
     for p in projects_list:
