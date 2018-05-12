@@ -1,4 +1,5 @@
 .vscode/
+venv/
 */elasticsearch/data/
 */__pycache__/
 */projects/
