@@ -23,6 +23,7 @@ services:
       - ./data/:/usr/share/logstash/data/
     ports:
       - "127.0.0.1:5000:5000"
+      - "127.0.0.1:8000:8000"
     environment:
       LS_JAVA_OPTS: "-Xmx512m -Xms512m"
     networks:
