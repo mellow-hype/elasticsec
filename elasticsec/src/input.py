@@ -20,18 +20,19 @@ class InputReader:
         # Initial checks and configuration for input
         self.config()
         self.check_dependencies(self.project.config.input_type)
-
         self.read()
 
-    
+
     # Read command, is passed 
     def read(self):
         if self.project.config.input_type == 'pcap':
             self.readcmd = \
-                "sudo /usr/share/packetbeat/bin/packetbeat -path.config {} -c packetbeat.yml -I {}".format(
-                    self.project.config.packetbeat_conf_path, 
-                    self.project.config.input_path
-                )
+                "sudo /usr/share/packetbeat/bin/packetbeat \
+                    -path.config {} \
+                    -c packetbeat.yml \
+                    -I {}".format(self.project.config.packetbeat_conf_path, 
+                                  self.project.config.input_path)
+
             subprocess.call(self.readcmd.split(' '))
 
         elif self.project.config.input_type == 'syslog':
